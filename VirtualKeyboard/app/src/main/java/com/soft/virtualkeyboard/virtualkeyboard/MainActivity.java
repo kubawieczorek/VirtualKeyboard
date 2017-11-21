@@ -19,8 +19,9 @@ import org.w3c.dom.Text;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    public static final String PREFS_NAME = "VirtualKeyboardFile";
     private TextToSpeech textToSpeech;
     private Button informationButton, enterTextButton, listenTextButton, configureWordButton;
     GestureDetector informationGestureDetector, enterTextGestureDetector, listenTextGestureDetector, configureWordGestureDetector;
@@ -29,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataStorage.init(getSharedPreferences(PREFS_NAME, 0));
+
+        Button buttonConf = (Button) findViewById(R.id.button3);
+        buttonConf.setOnClickListener(MainActivity.this);
+
         informationButton=(Button)findViewById(R.id.button);
         enterTextButton=(Button)findViewById(R.id.button2);
         configureWordButton=(Button)findViewById(R.id.button3);
@@ -132,4 +139,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId()== R.id.button3){
+            Intent intent = new Intent(this, ConfigurationActivity.class);
+            startActivity(intent);
+        }
+    }
 }
