@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ConfigurationActivity"></activity>
+        <activity android:name=".EnterTextActivity"></activity>
     </application>
 
 </manifest>

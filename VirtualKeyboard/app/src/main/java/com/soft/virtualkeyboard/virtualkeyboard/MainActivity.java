@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {//implements View.OnClickListener{
 
     public static final String PREFS_NAME = "VirtualKeyboardFile";
     private TextToSpeech textToSpeech;
@@ -33,16 +33,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         DataStorage.init(getSharedPreferences(PREFS_NAME, 0));
 
-        Button buttonConf = (Button) findViewById(R.id.button3);
-        buttonConf.setOnClickListener(MainActivity.this);
+        //Button buttonConf = (Button) findViewById(R.id.button3);
+        //buttonConf.setOnClickListener(MainActivity.this);
 
         informationButton=(Button)findViewById(R.id.button);
         enterTextButton=(Button)findViewById(R.id.button2);
         configureWordButton=(Button)findViewById(R.id.button3);
         listenTextButton=(Button)findViewById(R.id.button4);
 
-        informationGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener(){
+            @Override
+            public void onInit(int i) {
+                textToSpeech.setLanguage(new Locale("pl_PL"));
+            }
+        });
 
+        informationGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
 
@@ -60,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         enterTextGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
-
-                textToSpeech.speak("dwa razy", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(getApplicationContext(), EnterTextActivity.class);
+                startActivity(intent);
                 return true;
             }
 
@@ -90,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         configureWordGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
-
-                textToSpeech.speak("dwa razy", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(getApplicationContext(), ConfigurationActivity.class);
+                startActivity(intent);
                 return true;
             }
 
@@ -103,12 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener(){
-            @Override
-            public void onInit(int i) {
-                textToSpeech.setLanguage(new Locale("pl_PL"));
-            }
-        });
+
 
         informationButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -139,11 +140,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId()== R.id.button3){
-            Intent intent = new Intent(this, ConfigurationActivity.class);
-            startActivity(intent);
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        if(v.getId()== R.id.button3){
+//            Intent intent = new Intent(this, ConfigurationActivity.class);
+//            startActivity(intent);
+//        }
+//    }
 }
