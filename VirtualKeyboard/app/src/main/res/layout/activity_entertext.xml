@@ -16,17 +16,38 @@
         <Button
             android:id="@+id/backButton"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
             android:text="Cofnij do Menu" />
-
-        <TextView
-            android:id="@+id/wprowadzonyText"
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/enteredText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:clickable="true" />
+
+            <Button
+                android:id="@+id/enteredTextButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:backgroundTint="@android:color/transparent"
+                android:visibility="invisible"
+                tools:textAllCaps="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TableLayout
@@ -108,7 +129,7 @@
                         android:text="W X Y Z" />
 
                     <Button
-                        android:id="@+id/backDeleteButton"
+                        android:id="@+id/spaceDeleteButton"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
