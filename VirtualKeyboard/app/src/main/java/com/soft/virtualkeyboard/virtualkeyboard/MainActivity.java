@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {//implements View.OnClickLi
 
         DataStorage.init(getSharedPreferences(PREFS_NAME, 0));
 
-        //Button buttonConf = (Button) findViewById(R.id.button3);
-        //buttonConf.setOnClickListener(MainActivity.this);
-
         informationButton=(Button)findViewById(R.id.button);
         enterTextButton=(Button)findViewById(R.id.button2);
         configureWordButton=(Button)findViewById(R.id.button3);

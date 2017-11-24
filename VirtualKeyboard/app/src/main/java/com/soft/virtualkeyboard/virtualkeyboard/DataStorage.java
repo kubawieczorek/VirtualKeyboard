@@ -8,16 +8,26 @@ import android.content.SharedPreferences;
 
 public class DataStorage {
 
-    public static void setTextToRead(String val){
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("textToRead", val);
-        editor.commit();
+    public static boolean setTextToRead(String val){
+        try {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("textToRead", val);
+            editor.commit();
+            return true;
+        }catch (Exception ex){
+            return false;
+        }
     }
 
-    public static void setTextToWrite(String val){
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("textToWrite", val);
-        editor.commit();
+    public static boolean setTextToWrite(String val){
+        try {
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("textToWrite", val);
+            editor.commit();
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
     }
 
     public static void setErrorsCoefficient(Float val){
@@ -32,37 +42,30 @@ public class DataStorage {
         editor.commit();
     }
 
+    // Konfigurowalny tekst do odczytywania za pomoca 9-cio klawiszowej klawiatury
     public static String getTextToRead(){
-        return textToRead;
+        return settings.getString("textToRead", "");
     }
 
+    // Konfigurowalny tekst do wprowadzania za pomoca 9-cio klawiszowej klawiatury
     public static String getTextToWrite(){
-        return textToRead;
+        return settings.getString("textToWrite", "");
     }
 
+    // Wspolczynnik popelnianych bledow przy ostatnim odczytywaniu
     public static float getErrorsCoefficient(){
-        return errorsCoefficient;
+        return settings.getFloat("errorsCoefficient", 0.0f);
     }
 
+    // Szybkosc wprowadzania ostatnich danych za pomoca 9-cio klawiszowej klawiatury
     public static float getWrtitingSpeed(){
-        return wrtitingSpeed;
+        return settings.getFloat("wrtitingSpeed", 0.0f);
     }
 
     private static SharedPreferences settings;
 
-    // Konfigurowalny tekst do wprowadzania za pomoca 9-cio klawiszowej klawiatury
-    private static String textToRead;
-    // Konfigurowalny tekst do odczytywania za pomoca 9-cio klawiszowej klawiatury
-    private static String textToWrite;
-    // Wspolczynnik popelnianych bledow przy ostatnim odczytywaniu
-    private static float errorsCoefficient;
-    // Szybkosc wprowadzania ostatnich danych za pomoca 9-cio klawiszowej klawiatury
-    private static float wrtitingSpeed;
 
-    public static void init(SharedPreferences settings){
-        textToRead = settings.getString("textToRead", "");
-        textToWrite = settings.getString("textToWrite", "");
-        errorsCoefficient = settings.getFloat("errorsCoefficient", 0.0f);
-        wrtitingSpeed = settings.getFloat("wrtitingSpeed", 0.0f);
+    public static void init(SharedPreferences _settings){
+        settings = _settings;
     }
 }
