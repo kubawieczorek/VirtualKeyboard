@@ -13,17 +13,10 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2.5"
-            android:text="Cofnij do Menu" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
+            android:layout_weight="4"
             android:orientation="vertical">
 
             <TextView

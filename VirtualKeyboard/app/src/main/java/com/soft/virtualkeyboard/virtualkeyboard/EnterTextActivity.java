@@ -18,8 +18,8 @@ import java.util.Locale;
 public class EnterTextActivity extends AppCompatActivity {
 
     private TextToSpeech textToSpeech;
-    private Button backToMenuButton, abcButton, defButton, ghiButton, jklButton, mnoButton, pqrsButton, tuvButton, wxyzButton, spaceDeleteButton;
-    private GestureDetector backToMenuGestureDetector, abcGestureDetector, defGestureDetector, ghiGestureDetector,
+    private Button abcButton, defButton, ghiButton, jklButton, mnoButton, pqrsButton, tuvButton, wxyzButton, spaceDeleteButton;
+    private GestureDetector abcGestureDetector, defGestureDetector, ghiGestureDetector,
             jklGestureDetector, mnoGestureDetector, pqrsGestureDetector, tuvGestureDetector,
             wxyzGestureDetector, enteredTextButtonGestureDetector, spaceDeleteButtonGestureDetector;
     private String[] abcArray = new String[]{"","A","B","C"}, defArray = new String[]{"","D","E","D"},
@@ -36,7 +36,6 @@ public class EnterTextActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entertext);
-        backToMenuButton=(Button)findViewById(R.id.backButton);
         abcButton=(Button)findViewById(R.id.abcButton);
         defButton=(Button)findViewById(R.id.defButton);
         ghiButton=(Button)findViewById(R.id.ghiButton);
@@ -53,7 +52,6 @@ public class EnterTextActivity extends AppCompatActivity {
                 textToSpeech.setLanguage(new Locale("pl_PL"));
             }
         });
-        setBackToMenuButton();
         setAbcButton();
         setDefButton();
         setGhiButton();
@@ -121,30 +119,6 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 return spaceDeleteButtonGestureDetector.onTouchEvent(motionEvent);
-            }
-        });
-    }
-
-    private void setBackToMenuButton() {
-        backToMenuGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onDoubleTap(MotionEvent event) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-            @Override
-            public boolean onSingleTapConfirmed(MotionEvent e) {
-                textToSpeech.speak(backToMenuButton.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
-                return true;
-            }
-        });
-
-        backToMenuButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return backToMenuGestureDetector.onTouchEvent(motionEvent);
             }
         });
     }
