@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ConfigurationActivity extends AppCompatActivity{
 
@@ -25,8 +26,10 @@ public class ConfigurationActivity extends AppCompatActivity{
                 boolean ret2 = false;
 
                 // Zapisywanie konfiguracji
+                // Najlepszy tekst "The quick brown fox jumps over the lazy dog"
                 ret1 = DataStorage.setTextToRead(editTextReadConf.getText().toString());
                 ret2 = DataStorage.setTextToWrite(editTextWriteConf.getText().toString());
+
 
                 //Przygotowanie wiadomosci o powodzeniu zapisu
                 String message = "";
@@ -53,6 +56,9 @@ public class ConfigurationActivity extends AppCompatActivity{
                 alert11.show();
             }
         });
+
+
+
     }
 
     @Override

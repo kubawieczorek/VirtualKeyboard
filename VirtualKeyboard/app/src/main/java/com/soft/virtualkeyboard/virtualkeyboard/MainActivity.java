@@ -1,21 +1,13 @@
 package com.soft.virtualkeyboard.virtualkeyboard;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.text.Layout;
 import android.view.GestureDetector;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.Locale;
 
@@ -48,8 +40,8 @@ public class MainActivity extends AppCompatActivity {//implements View.OnClickLi
         informationGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
-
-                textToSpeech.speak("dwa razy", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(getApplicationContext(), AchievementsActivity.class);
+                startActivity(intent);
                 return true;
             }
 

@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConfigurationActivity"></activity>
-        <activity android:name=".EnterTextActivity"></activity>
+        <activity android:name=".ConfigurationActivity" />
+        <activity android:name=".EnterTextActivity" />
+        <activity android:name=".AchievementsActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class EnterTextActivity extends AppCompatActivity {
@@ -26,6 +29,7 @@ public class EnterTextActivity extends AppCompatActivity {
             spaceDeleteArray = new String[]{"","Spacja","Usuń"};
     private int abcIndex = 0, defIndex, ghiIndex, jklIndex, mnoIndex, pqrsIndex, tuvIndex, wxyzIndex, spaceDeleteIndex;
     private TextView enteredText;
+    private Date startData;
 
 
     @Override
@@ -150,11 +154,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += abcArray[abcIndex];
-                else
+                }
+                else {
                     text += abcArray[abcIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -180,11 +188,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += defArray[defIndex];
-                else
+                }
+                else {
                     text += defArray[defIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -210,11 +222,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += ghiArray[ghiIndex];
-                else
+                }
+                else {
                     text += ghiArray[ghiIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -240,11 +256,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += jklArray[jklIndex];
-                else
+                }
+                else {
                     text += jklArray[jklIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -270,11 +290,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += mnoArray[mnoIndex];
-                else
+                }
+                else {
                     text += mnoArray[mnoIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -300,11 +324,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += pqrsArray[pqrsIndex];
-                else
+                }
+                else {
                     text += pqrsArray[pqrsIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -330,11 +358,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += tuvArray[tuvIndex];
-                else
+                }
+                else {
                     text += tuvArray[tuvIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -360,11 +392,15 @@ public class EnterTextActivity extends AppCompatActivity {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
                 String text = enteredText.getText().toString();
-                if (text.length() == 0)
+                if (text.length() == 0){
+                    startData = Calendar.getInstance().getTime();
                     text += wxyzArray[wxyzIndex];
-                else
+                }
+                else{
                     text += wxyzArray[wxyzIndex].toLowerCase();
+                }
                 enteredText.setText(text);
+                checkText();
                 return true;
             }
 
@@ -385,4 +421,12 @@ public class EnterTextActivity extends AppCompatActivity {
         });
     }
 
+    private void checkText(){
+        if (DataStorage.getTextToWrite().matches(enteredText.getText().toString())) {
+            Date currentTime = Calendar.getInstance().getTime();
+            DataStorage.setWrtitingSpeed((float)((currentTime.getTime() - startData.getTime())/1000));
+            textToSpeech.speak("Twój czas pisania to " + DataStorage.getWrtitingSpeed() + " sekund", TextToSpeech.QUEUE_FLUSH, null);
+        }
+
+    }
 }
