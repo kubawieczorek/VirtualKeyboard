@@ -18,7 +18,11 @@
         </activity>
         <activity android:name=".ConfigurationActivity" />
         <activity android:name=".EnterTextActivity" />
-        <activity android:name=".AchievementsActivity"></activity>
+        <activity android:name=".AchievementsActivity" />
+        <activity
+            android:name=".ReadTextActivity"
+            android:label="@string/title_activity_read_text"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>

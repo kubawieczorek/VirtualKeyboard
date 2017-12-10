@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {//implements View.OnClickLi
         listenTextGestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent event) {
-
-                textToSpeech.speak("dwa razy", TextToSpeech.QUEUE_FLUSH, null);
+                Intent intent = new Intent(getApplicationContext(), ReadTextActivity.class);
+                startActivity(intent);
                 return true;
             }
 
