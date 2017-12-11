@@ -34,6 +34,7 @@ public class ReadTextActivity extends AppCompatActivity {
     private String textToRead;
     private int CurrentWordIndex = 0;
     private Vibrator v;
+    private Date startData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +99,9 @@ public class ReadTextActivity extends AppCompatActivity {
     }
 
     private void checkVibrate(String letter){
+        if (CurrentWordIndex == 0) {
+            startData = Calendar.getInstance().getTime();
+        }
         if(letter.equals(" ")){
             textToSpeech.speak("Spacja", TextToSpeech.QUEUE_FLUSH, null);
         }
@@ -111,7 +115,7 @@ public class ReadTextActivity extends AppCompatActivity {
             CurrentWordIndex++;
             if(CurrentWordIndex == textToRead.length()){
                 v.vibrate(2000);
-                textToSpeech.speak("Tekst " + textToRead + " został odczytany", TextToSpeech.QUEUE_FLUSH, null);
+                setAchievements();
             }
         }
     }
@@ -293,6 +297,13 @@ public class ReadTextActivity extends AppCompatActivity {
                 return wxyzGestureDetector.onTouchEvent(motionEvent);
             }
         });
+    }
+
+    private void setAchievements(){
+        Date currentTime = Calendar.getInstance().getTime();
+        float writingSpeed =  (float)((currentTime.getTime() - startData.getTime())/1000);
+        DataStorage.setReadingSpeed(writingSpeed);
+        textToSpeech.speak("Twój czas pisania to " + writingSpeed + " sekund", TextToSpeech.QUEUE_FLUSH, null);
     }
 
 }

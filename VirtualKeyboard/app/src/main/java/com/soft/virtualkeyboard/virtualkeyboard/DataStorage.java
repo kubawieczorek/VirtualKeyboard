@@ -43,6 +43,13 @@ public class DataStorage {
         checkWriteSpeed(val);
     }
 
+    public static void setReadingSpeed(Float val){
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putFloat("readingSpeed", val);
+        editor.commit();
+        checkReadSpeed(val);
+    }
+
     // Konfigurowalny tekst do odczytywania za pomoca 9-cio klawiszowej klawiatury
     public static String getTextToRead(){
         return settings.getString("textToRead", "");
@@ -103,6 +110,17 @@ public class DataStorage {
         }
 
         editor.putFloat("averageWriteSpeed", (averageSpeed + speed)/2);
+        editor.commit();
+    }
+
+    private static void checkReadSpeed(Float speed) {
+        Float bestSpeed = getBestReadSpeed(), averageSpeed = getAverageReadSpeed();
+        SharedPreferences.Editor editor = settings.edit();
+        if ((bestSpeed > speed) || (bestSpeed == 0)){
+            editor.putFloat("bestReadSpeed", speed);
+        }
+
+        editor.putFloat("averageReadSpeed", (averageSpeed + speed)/2);
         editor.commit();
     }
 }
