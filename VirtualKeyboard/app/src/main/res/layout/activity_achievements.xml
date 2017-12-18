@@ -16,26 +16,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/title1Text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:ems="10"
+                android:gravity="center_vertical"
                 android:inputType="textPersonName"
-                android:text="Rodzaj tekstu"
+                android:text="Tekst\\Czas"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/title2Text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:inputType="textPersonName"
                 android:text="Najlepszy"
                 android:textAlignment="center"
@@ -44,10 +44,11 @@
 
             <TextView
                 android:id="@+id/title3Text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
+                android:gravity="center_vertical"
                 android:inputType="none|textPersonName"
                 android:text="Średni"
                 android:textAlignment="center"
@@ -63,7 +64,7 @@
 
             <TextView
                 android:id="@+id/writeTitleText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
@@ -74,7 +75,7 @@
 
             <TextView
                 android:id="@+id/bestWriteText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
@@ -84,7 +85,7 @@
 
             <TextView
                 android:id="@+id/averageWriteText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
@@ -101,7 +102,7 @@
 
             <TextView
                 android:id="@+id/readTitleText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
@@ -112,7 +113,7 @@
 
             <TextView
                 android:id="@+id/bestReadText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
@@ -122,7 +123,7 @@
 
             <TextView
                 android:id="@+id/averageReadText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"

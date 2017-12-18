@@ -25,9 +25,9 @@ public class ReadTextActivity extends AppCompatActivity {
     private GestureDetector abcGestureDetector, defGestureDetector, ghiGestureDetector,
             jklGestureDetector, mnoGestureDetector, pqrsGestureDetector, tuvGestureDetector,
             wxyzGestureDetector, enteredTextButtonGestureDetector, spaceDeleteButtonGestureDetector;
-    private String[] abcArray = new String[]{"","A","B","C"}, defArray = new String[]{"","D","E","D"},
+    private String[] abcArray = new String[]{"","A","B","C"}, defArray = new String[]{"","D","E","F"},
             ghiArray = new String[]{"","G","H","I"}, jklArray = new String[]{"","J","K","L"},
-            mnoArray = new String[]{"","M","N","O"}, pqrsArray = new String[]{"","P","Q","R","s"},
+            mnoArray = new String[]{"","M","N","O"}, pqrsArray = new String[]{"","P","Q","R","S"},
             tuvArray = new String[]{"","T","U","V"}, wxyzArray = new String[]{"","W","X","Y","Z"};
     private int abcIndex = 0, defIndex, ghiIndex, jklIndex, mnoIndex, pqrsIndex, tuvIndex, wxyzIndex;
     private TextView textToReadView;
@@ -112,11 +112,14 @@ public class ReadTextActivity extends AppCompatActivity {
                 String.valueOf(textToRead.charAt(CurrentWordIndex)).toUpperCase()
                 .equals(letter.toUpperCase())){
             v.vibrate(500);
+            resetIndexes("");
             CurrentWordIndex++;
             if(CurrentWordIndex == textToRead.length()){
                 v.vibrate(2000);
                 setAchievements();
             }
+        } else {
+            resetIndexes(letter);
         }
     }
 
@@ -306,4 +309,33 @@ public class ReadTextActivity extends AppCompatActivity {
         textToSpeech.speak("Twój czas pisania to " + writingSpeed + " sekund", TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    private void resetIndexes(String letter){
+        if (!checkLetter(letter, new char[]{'A', 'B', 'C'}))
+            abcIndex = 0;
+        if (!checkLetter(letter, new char[]{'D', 'E', 'F'}))
+            defIndex = 0;
+        if (!checkLetter(letter, new char[]{'G', 'H', 'I'}))
+            ghiIndex = 0;
+        if (!checkLetter(letter, new char[]{'J', 'K', 'L'}))
+            jklIndex = 0;
+        if (!checkLetter(letter, new char[]{'M', 'N', 'O'}))
+            mnoIndex = 0;
+        if (!checkLetter(letter, new char[]{'P', 'Q', 'R', 'S'}))
+            pqrsIndex = 0;
+        if (!checkLetter(letter, new char[]{'T', 'U', 'V'}))
+            tuvIndex = 0;
+        if (!checkLetter(letter, new char[]{'W', 'X', 'Y', 'Z'}))
+            wxyzIndex = 0;
+    }
+
+    private boolean checkLetter(String letter, char[] charArray){
+        if (letter.length() == 0)
+            return false;
+        char charLetter = letter.charAt(0);
+        for (int index = 0; index < charArray.length; index++){
+            if (charLetter == charArray[index])
+                return true;
+        }
+        return false;
+    }
 }

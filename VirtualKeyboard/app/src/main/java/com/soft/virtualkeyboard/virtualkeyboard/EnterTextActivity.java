@@ -22,9 +22,9 @@ public class EnterTextActivity extends AppCompatActivity {
     private GestureDetector abcGestureDetector, defGestureDetector, ghiGestureDetector,
             jklGestureDetector, mnoGestureDetector, pqrsGestureDetector, tuvGestureDetector,
             wxyzGestureDetector, enteredTextButtonGestureDetector, spaceDeleteButtonGestureDetector;
-    private String[] abcArray = new String[]{"","A","B","C"}, defArray = new String[]{"","D","E","D"},
+    private String[] abcArray = new String[]{"","A","B","C"}, defArray = new String[]{"","D","E","F"},
             ghiArray = new String[]{"","G","H","I"}, jklArray = new String[]{"","J","K","L"},
-            mnoArray = new String[]{"","M","N","O"}, pqrsArray = new String[]{"","P","Q","R","s"},
+            mnoArray = new String[]{"","M","N","O"}, pqrsArray = new String[]{"","P","Q","R","S"},
             tuvArray = new String[]{"","T","U","V"}, wxyzArray = new String[]{"","W","X","Y","Z"},
             spaceDeleteArray = new String[]{"","Spacja","Usuń"};
     private int abcIndex = 0, defIndex, ghiIndex, jklIndex, mnoIndex, pqrsIndex, tuvIndex, wxyzIndex, spaceDeleteIndex;
@@ -103,6 +103,7 @@ public class EnterTextActivity extends AppCompatActivity {
                         text = text.substring(0, text.length()-1);
                 }
                 enteredText.setText(text);
+                resetIndexes("");
                 return true;
             }
 
@@ -111,6 +112,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 spaceDeleteIndex++;
                 if (spaceDeleteIndex > spaceDeleteArray.length-1) spaceDeleteIndex = 1;
                 textToSpeech.speak(spaceDeleteArray[spaceDeleteIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes(" ");
                 return true;
             }
         });
@@ -137,6 +139,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -145,6 +148,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 abcIndex++;
                 if (abcIndex > abcArray.length-1) abcIndex = 1;
                 textToSpeech.speak(abcArray[abcIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("abc");
                 return true;
             }
         });
@@ -171,6 +175,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -179,6 +184,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 defIndex++;
                 if (defIndex > defArray.length-1) defIndex = 1;
                 textToSpeech.speak(defArray[defIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("def");
                 return true;
             }
         });
@@ -205,6 +211,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("ghi");
                 return true;
             }
 
@@ -213,6 +220,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 ghiIndex++;
                 if (ghiIndex > ghiArray.length-1) ghiIndex = 1;
                 textToSpeech.speak(ghiArray[ghiIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("");
                 return true;
             }
         });
@@ -239,6 +247,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -247,6 +256,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 jklIndex++;
                 if (jklIndex > jklArray.length-1) jklIndex = 1;
                 textToSpeech.speak(jklArray[jklIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("jkl");
                 return true;
             }
         });
@@ -273,6 +283,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -281,6 +292,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 mnoIndex++;
                 if (mnoIndex > mnoArray.length-1) mnoIndex = 1;
                 textToSpeech.speak(mnoArray[mnoIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("mno");
                 return true;
             }
         });
@@ -307,6 +319,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -315,6 +328,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 pqrsIndex++;
                 if (pqrsIndex > pqrsArray.length-1) pqrsIndex = 1;
                 textToSpeech.speak(pqrsArray[pqrsIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("pqrs");
                 return true;
             }
         });
@@ -341,6 +355,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -349,6 +364,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 tuvIndex++;
                 if (tuvIndex > tuvArray.length-1) tuvIndex = 1;
                 textToSpeech.speak(tuvArray[tuvIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("tuv");
                 return true;
             }
         });
@@ -375,6 +391,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 }
                 enteredText.setText(text);
                 checkText();
+                resetIndexes("");
                 return true;
             }
 
@@ -383,6 +400,7 @@ public class EnterTextActivity extends AppCompatActivity {
                 wxyzIndex++;
                 if (wxyzIndex > wxyzArray.length-1) wxyzIndex = 1;
                 textToSpeech.speak(wxyzArray[wxyzIndex], TextToSpeech.QUEUE_FLUSH, null);
+                resetIndexes("wxyz");
                 return true;
             }
         });
@@ -401,6 +419,26 @@ public class EnterTextActivity extends AppCompatActivity {
             DataStorage.setWrtitingSpeed((float)((currentTime.getTime() - startData.getTime())/1000));
             textToSpeech.speak("Twój czas pisania to " + DataStorage.getWrtitingSpeed() + " sekund", TextToSpeech.QUEUE_FLUSH, null);
         }
+    }
 
+    private void resetIndexes(String letters){
+        if (!letters.matches("abc"))
+            abcIndex = 0;
+        if (!letters.matches("def"))
+            defIndex = 0;
+        if (!letters.matches("ghi"))
+            ghiIndex = 0;
+        if (!letters.matches("jkl"))
+            jklIndex = 0;
+        if (!letters.matches("mno"))
+            mnoIndex = 0;
+        if (!letters.matches("pqrs"))
+            pqrsIndex = 0;
+        if (!letters.matches("tuv"))
+            tuvIndex = 0;
+        if (!letters.matches("wxyz"))
+            wxyzIndex = 0;
+        if (!letters.matches(" "))
+            spaceDeleteIndex = 0;
     }
 }

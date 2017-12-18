@@ -8,10 +8,15 @@
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_height="560dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:clickable="true" />
+                android:clickable="true"
+                android:textSize="40sp" />
 
             <Button
                 android:id="@+id/enteredTextButton"
@@ -45,7 +51,8 @@
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -57,21 +64,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="A B C" />
+                        android:text="A B C"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/defButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="D E F" />
+                        android:text="D E F"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/ghiButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="G H I" />
+                        android:text="G H I"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                 </TableRow>
 
@@ -85,21 +98,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="JKL" />
+                        android:text="J K L"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/mnoButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="M N O" />
+                        android:text="M N O"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/pqrsButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="P Q R S" />
+                        android:text="P Q R S"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <TableRow
@@ -109,24 +128,30 @@
 
                     <Button
                         android:id="@+id/tuvButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="T U V" />
+                        android:text="T U V"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/wxyzButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="W X Y Z" />
+                        android:text="W X Y Z"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/spaceButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Spacja" />
+                        android:text="Spacja"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
                 </TableRow>
 
             </TableLayout>
