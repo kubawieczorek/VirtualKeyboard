@@ -306,7 +306,7 @@ public class ReadTextActivity extends AppCompatActivity {
         Date currentTime = Calendar.getInstance().getTime();
         float writingSpeed =  (float)((currentTime.getTime() - startData.getTime())/1000);
         DataStorage.setReadingSpeed(writingSpeed);
-        textToSpeech.speak("Twój czas pisania to " + writingSpeed + " sekund", TextToSpeech.QUEUE_FLUSH, null);
+        textToSpeech.speak("Twój czas czytania to " + writingSpeed + " sekund", TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private void resetIndexes(String letter){
